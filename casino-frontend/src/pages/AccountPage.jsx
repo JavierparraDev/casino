@@ -3,11 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import UserInfo from '../components/UserInfo';
 import LogoutButton from '../components/LogoutButton';
 import api from '../api';
-import '../styles/AccountPage.css'; 
-
+import '../styles/AccountPage.css';
 
 const AccountPage = () => {
-    const [error, setError] = useState('');AccountPage.css
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -33,38 +32,43 @@ const AccountPage = () => {
     if (error) {
         return (
             <div className="account-container">
-                <p  className="error-message">{error}</p>
-                <button
-                    onClick={() => navigate('/login')}
-                    className="button button-primary"
-                >
-                    Ir a Login
-                </button>
+                <div className="account-card">
+                    <p className="error-message">{error}</p>
+                    <button
+                        onClick={() => navigate('/login')}
+                        className="button button-primary"
+                    >
+                        Ir a Login
+                    </button>
+                </div>
             </div>
         );
     }
 
     return (
         <div className="account-container">
-        <h1>Mi Cuenta</h1>
-        <UserInfo />
-        <div className="button-group">
-            <button
-                onClick={() => navigate('/betsHistory')}
-                className="button button-primary"
-            >
-                Mis Apuestas
-            </button>
-            <button
-                onClick={() => navigate('/adminBalance')}
-                className="button button-success"
-            >
-                Administrar Saldo
-            </button>            
+            <div className="account-card">
+                <h1>Mi Cuenta</h1>
+                <UserInfo />
+                <div className="button-group">
+                    <button
+                        onClick={() => navigate('/betsHistory')}
+                        className="button button-primary"
+                    >
+                        Mis Apuestas
+                    </button>
+                    <button
+                        onClick={() => navigate('/adminBalance')}
+                        className="button button-success"
+                    >
+                        Administrar Saldo
+                    </button>
+                </div>
+                
+                <LogoutButton navigate={navigate} />
+            </div>
         </div>
-        <LogoutButton navigate={navigate} />
-    </div>
-);
+    );
 };
 
 export default AccountPage;
