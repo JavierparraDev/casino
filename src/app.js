@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(errorHandler);
 app.use(cors({
-    origin: 'http://localhost:5173', // O 'http://localhost:5173' se modifica dependiento del port de front
+    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'], // O 'http://localhost:5173' se modifica dependiento del port de front
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
