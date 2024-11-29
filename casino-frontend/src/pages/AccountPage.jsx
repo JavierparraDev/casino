@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import UserInfo from '../components/UserInfo';
 import LogoutButton from '../components/LogoutButton';
 import api from '../api';
-import './AccountPage.css'; 
+import '../styles/AccountPage.css'; 
 
 
 const AccountPage = () => {

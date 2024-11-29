@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
+import '../styles/RegisterPage.css'; // Importa los estilos
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -42,7 +43,7 @@ const Register = () => {
     };
 
     return (
-        <div className="register-container">
+        <div className="card"> {/* Aquí envolvemos todo el contenido en una card */}
             <h2>Registro de Usuario</h2>
             <form onSubmit={handleSubmit}>
                 <input
@@ -115,8 +116,8 @@ const Register = () => {
                 />
                 <button type="submit">Registrar</button>
             </form>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            {success && <p style={{ color: 'green' }}>{success}</p>}
+            {error && <p className="error">{error}</p>}
+            {success && <p className="success">{success}</p>}
         </div>
     );
 };

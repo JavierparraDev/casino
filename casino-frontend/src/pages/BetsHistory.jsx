@@ -1,12 +1,13 @@
+// src/pages/BetsPage.jsx
 import React from 'react';
+import UserBets from '../components/UserBets';
 
-const BetsPage = () => {
+const BetsHistory = () => {
     return (
         <div>
-            <h1>Mis Apuestas</h1>
-            <p>Aquí podrás ver el historial de tus apuestas.</p>
+            <UserBets />
         </div>
     );
 };
 
-export default BetsPage;
+export default BetsHistory;
