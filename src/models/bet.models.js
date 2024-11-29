@@ -8,12 +8,13 @@ const betSchema = new mongoose.Schema(
     league: { type: String, required: true },
     homeTeam: { type: String, required: true },
     awayTeam: { type: String, required: true },
-    teamId: { type: mongoose.Schema.Types.ObjectId, ref: 'Team', required: false }, // ID del equipo al que se apostó
+    teamId: { type: Number, required: false }, // ID del equipo al que se apostó
     betType: { type: String, enum: ['home', 'away', 'draw'], required: true }, // Tipos actualizados
     amount: { type: Number, required: true, min: 1 },
     odds: { type: Number, required: true, default: 2.0 },
     result: { type: String, enum: ['pendiente', 'ganada', 'perdida'], default: 'pendiente' },
     status: { type: String, enum: ['activa', 'cancelada', 'resuelta'], default: 'activa' },
+    claimed: { type: Boolean, default: false },
   },
   {
     timestamps: true,

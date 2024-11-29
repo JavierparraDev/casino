@@ -61,6 +61,11 @@ const AccountPage = () => {
             >
                 Administrar Saldo
             </button>
+
+            <div style={{ position: 'absolute', top: '485px', left: '200px' }}>
+                <button onClick={() => navigate('/')}>Inicio</button>
+            </div>
+            
         </div>
         <LogoutButton navigate={navigate} />
     </div>

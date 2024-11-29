@@ -2,7 +2,6 @@
 import axios from 'axios';
 import { RAPIDAPI_CONFIG } from '../config/rapidapi.js';
 
-
 // Validar partido por ID desde la API
 export const validateMatchFromAPI = async (matchId) => {
     try {
@@ -37,5 +36,24 @@ export const getMatchesByLeague = async (leagueId) => {
   } catch (error) {
     console.error('Error al obtener partidos:', error.response?.data || error.message);
     throw new Error('Error al obtener los partidos de la liga.');
+  }
+};
+
+// Obtener partidos históricos
+export const getPastMatches = async (date, matchId) => {
+  try {
+      const response = await axios.get(`${RAPIDAPI_CONFIG.BASE_URL}/fixtures`, {
+          headers: RAPIDAPI_CONFIG.HEADERS,
+          params: { date, status: 'FT' },  // Solo partidos finalizados
+      });
+
+      // Filtrar por matchId si se proporciona
+      const match = response.data.response.find((match) => match.fixture.id === matchId);
+      
+      return match || null;  // Retorna el partido si existe, sino null
+
+  } catch (error) {
+      console.error('Error al obtener partidos históricos:', error.response?.data || error.message);
+      throw new Error('Error al obtener los partidos históricos.');
   }
 };
