@@ -5,6 +5,7 @@ import axios from 'axios';
 const PastMatches = () => {
     const [pastMatches, setPastMatches] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [visibleCount, setVisibleCount] = useState(10);
 
     const fetchPastMatches = async () => {
         setLoading(true);
@@ -19,7 +20,6 @@ const PastMatches = () => {
         }
     };
 
-    // Función para calcular el resultado del partido (ganador o empate)
     const getWinnerMessage = (homeScore, awayScore, homeTeam, awayTeam) => {
         if (homeScore > awayScore) {
             return `Victoria de ${homeTeam}`;
@@ -30,29 +30,34 @@ const PastMatches = () => {
         }
     };
 
-    // Renderiza los partidos pasados con la información adicional
     const renderMatches = (matches) => (
         <ul>
-            {matches.map((match) => {
-                // Extraemos la información de cada partido
+            {matches.slice(0, visibleCount).map((match) => {
                 const homeTeam = match.teams.home.name;
                 const awayTeam = match.teams.away.name;
                 const homeScore = match.goals.home;
                 const awayScore = match.goals.away;
-                const matchDate = new Date(match.fixture.date).toLocaleString(); // Fecha y hora del partido
+                const matchDate = new Date(match.fixture.date).toLocaleString();
                 const leagueName = match.league.name;
-                
-                // Calculamos el mensaje del ganador
+
                 const winnerMessage = getWinnerMessage(homeScore, awayScore, homeTeam, awayTeam);
 
                 return (
                     <li key={match.fixture.id} style={{ marginBottom: '20px' }}>
                         <div>
                             <h4>{leagueName}</h4>
-                            <p><strong>Fecha:</strong> {matchDate}</p>
-                            <p><strong>Partido:</strong> {homeTeam} vs {awayTeam}</p>
-                            <p><strong>Marcador Final:</strong> {homeScore} - {awayScore}</p>
-                            <p><strong>Resultado:</strong> {winnerMessage}</p>
+                            <p>
+                                <strong>Fecha:</strong> {matchDate}
+                            </p>
+                            <p>
+                                <strong>Partido:</strong> {homeTeam} vs {awayTeam}
+                            </p>
+                            <p>
+                                <strong>Marcador Final:</strong> {homeScore} - {awayScore}
+                            </p>
+                            <p>
+                                <strong>Resultado:</strong> {winnerMessage}
+                            </p>
                         </div>
                     </li>
                 );
@@ -67,6 +72,20 @@ const PastMatches = () => {
                 {loading ? 'Cargando...' : 'Actualizar'}
             </button>
             {renderMatches(pastMatches)}
+            {visibleCount < pastMatches.length && (
+                <p
+                    onClick={() => setVisibleCount((prev) => prev + 10)}
+                    style={{
+                        marginTop: '10px',
+                        textAlign: 'center',
+                        color: '#007bff',
+                        textDecoration: 'underline',
+                        cursor: 'pointer',
+                    }}
+                >
+                    Mostrar más
+                </p>
+            )}
         </div>
     );
 };

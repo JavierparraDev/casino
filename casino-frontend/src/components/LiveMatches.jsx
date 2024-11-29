@@ -6,13 +6,13 @@ import BetButton from './BetButton'; // Importamos el componente del botón de a
 const LiveMatches = () => {
     const [liveMatches, setLiveMatches] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [visibleCount, setVisibleCount] = useState(10); // Estado para controlar la cantidad de elementos visibles
 
     const fetchLiveMatches = async () => {
         setLoading(true);
         try {
             const response = await axios.get('http://localhost:5000/api/dashboard/live');
-            console.log('Partidos en vivo:', response.data); // Verifica los datos disponibles
-            setLiveMatches(response.data);
+            setLiveMatches(response.data); // Cargamos todos los partidos en vivo
         } catch (error) {
             console.error('Error al cargar partidos en vivo:', error);
         } finally {
@@ -41,7 +41,7 @@ const LiveMatches = () => {
 
     const renderMatchDetails = (matches) => (
         <ul>
-            {matches.map((match) => (
+            {matches.slice(0, visibleCount).map((match) => ( // Mostramos solo los partidos visibles
                 <li key={match.fixture.id} style={{ marginBottom: '20px' }}>
                     <h4>{match.league.name}</h4>
                     <p>
@@ -61,6 +61,8 @@ const LiveMatches = () => {
                         league={match.league.name}
                         homeTeam={match.teams.home.name}
                         awayTeam={match.teams.away.name}
+                        homeTeamId={match.teams.home.id} // ID del equipo local
+                        awayTeamId={match.teams.away.id} // ID del equipo visitante
                     />
                 </li>
             ))}
@@ -74,6 +76,20 @@ const LiveMatches = () => {
                 {loading ? 'Cargando...' : 'Actualizar'}
             </button>
             {renderMatchDetails(liveMatches)}
+            {visibleCount < liveMatches.length && (
+                <p
+                    onClick={() => setVisibleCount((prev) => prev + 10)}
+                    style={{
+                        marginTop: '10px',
+                        textAlign: 'center',
+                        color: '#007bff',
+                        textDecoration: 'underline',
+                        cursor: 'pointer',
+                    }}
+                >
+                    Mostrar más
+                </p>
+            )}
         </div>
     );
 };
