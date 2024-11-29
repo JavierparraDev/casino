@@ -40,6 +40,8 @@ const AdminBalance = () => {
                 >
                     Retirar Saldo
                 </button>
+
+                <button onClick={() => navigate('/account')}>Cuenta</button>
             </div>
         </div>
     );

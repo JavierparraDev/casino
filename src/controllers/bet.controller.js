@@ -2,91 +2,54 @@
 import Bet from '../models/bet.models.js';
 import User from '../models/user.models.js';
 import { validateMatchFromAPI } from '../services/apiFootball.Service.js';
+import { updateUserBets, createBetService, getResolvedBets } from '../services/bet.service.js';
 
+// Crear una nueva apuesta
 export const createBet = async (req, res) => {
-    const { matchId, league, teamId, betType, amount, homeTeam, awayTeam } = req.body;
-
     try {
-        // Validar el usuario autenticado
-        const user = req.user;
-        if (!user) return res.status(401).json({ error: 'Usuario no autenticado.' });
+        const { matchId, betType, amount, teamId } = req.body;
+        const userId = req.user._id;
 
-        // Verificar saldo suficiente
-        if (user.saldo < amount) {
-            return res.status(400).json({ error: 'Saldo insuficiente para realizar esta apuesta.' });
+        if (!matchId || !betType || !amount) {
+            return res.status(400).json({ error: 'Faltan datos para realizar la apuesta.' });
         }
 
-        // Establecer odds fijas
-        const odds = {
-            home: 1.8, // Odds para el equipo local
-            away: 2.2, // Odds para el equipo visitante
-            draw: 2.0, // Odds para empate
-        }[betType];
-
-        if (!odds) {
-            return res.status(400).json({ error: 'Tipo de apuesta inválido.' });
-        }
-
-        // Crear la apuesta
-        const newBet = new Bet({
-            user: user._id,
-            matchId,
-            league,
-            homeTeam,
-            awayTeam,
-            teamId, // Este campo será null para "draw"
-            betType,
-            amount,
-            odds,
-        });
-
-        // Guardar la apuesta
-        const savedBet = await newBet.save();
-
-        // Restar saldo del usuario
-        user.saldo -= amount;
-        await user.save();
-
-        // Enviar la respuesta con la apuesta creada
-        res.status(201).json(savedBet);
+        const bet = await createBetService({ userId, matchId, betType, amount, teamId });
+        res.status(201).json(bet);
     } catch (error) {
         console.error('Error al crear apuesta:', error.message);
-        res.status(500).json({ error: 'Error interno del servidor.' });
+        res.status(500).json({ error: 'Error interno al crear la apuesta.' });
     }
 };
 
+// Obtener apuestas activas de un usuario y actualizar su estado y resultado
 export const getUserBets = async (req, res) => {
     try {
-        const userId = req.user._id; // Obtenemos el ID del usuario autenticado
-        const userBets = await Bet.find({ user: userId, status: 'activa' });
+        const userId = req.user._id; // ID del usuario autenticado
+        console.log(`Obteniendo apuestas activas y resueltas para el usuario ID: ${userId}`);
 
-        const updatedBets = await Promise.all(
-            userBets.map(async (bet) => {
-                const match = await validateMatchFromAPI(bet.matchId);
-                if (!match) {
-                    bet.status = 'cancelada'; // Si no se encuentra el partido, cancelar la apuesta
-                } else if (match.fixture.status.short === 'FT') {
-                    // Validar el resultado del partido
-                    const homeGoals = match.goals.home;
-                    const awayGoals = match.goals.away;
-                    const winner =
-                        homeGoals > awayGoals
-                            ? 'home'
-                            : homeGoals < awayGoals
-                            ? 'away'
-                            : 'draw';
+        // Obtener apuestas activas y actualizarlas
+        const activeBets = await updateUserBets(userId);  // Actualizamos el estado de las apuestas activas
+        
+        // Obtener apuestas resueltas
+        const resolvedBets = await getResolvedBets(userId);  // Traemos las apuestas resueltas
 
-                    bet.result = winner === bet.betType ? 'ganada' : 'perdida';
-                    bet.status = 'resuelta';
-                }
-                await bet.save();
-                return bet;
-            })
-        );
+        // Unificamos las apuestas activas y resueltas en un solo objeto
+        const allBets = {
+            activeBets,
+            resolvedBets,
+        };
 
-        res.status(200).json(updatedBets);
+        // Enviar la respuesta con todas las apuestas
+        return res.status(200).json(allBets);
+
     } catch (error) {
+        // Manejo de errores con más detalles
         console.error('Error al obtener apuestas:', error.message);
-        res.status(500).json({ error: 'Error al obtener las apuestas.' });
+        
+        // Si el error es por algún problema con la base de datos o lógica de negocio, mandamos un 500
+        return res.status(500).json({ 
+            error: 'Error al obtener las apuestas. Intenta nuevamente.' 
+        });
     }
 };

@@ -4,6 +4,7 @@ import {
     createTransaction,
     updateTransactionById,
     deleteTransactionById,
+    claimReward
 } from '../services/transaction.Service.js';
 
 // Obtener todas las transacciones
@@ -53,6 +54,24 @@ export const createNewTransaction = async (req, res) => {
     } catch (error) {
         console.error('Error al crear la transacción:', error);
         res.status(400).json({ error: error.message });
+    }
+};
+
+// Endpoint para reclamar recompensa
+export const claimRewardHandler = async (req, res) => {
+    try {
+        const { betId, userId } = req.body; // Recibimos el `userId` desde el cuerpo de la solicitud
+
+        if (!userId) {
+            return res.status(400).json({ error: 'Usuario no autenticado o falta el ID del usuario.' });
+        }
+
+        const reward = await claimReward(betId, userId);
+
+        res.status(200).json({ message: `¡Recompensa de ${reward} reclamada con éxito!` });
+    } catch (error) {
+        console.error('Error al reclamar recompensa:', error.message);
+        res.status(500).json({ error: error.message });
     }
 };
 

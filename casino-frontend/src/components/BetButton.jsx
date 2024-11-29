@@ -2,7 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const BetButton = ({ matchId, league, homeTeam, awayTeam }) => {
+const BetButton = ({ matchId, league, homeTeam, awayTeam, homeTeamId, awayTeamId }) => {
     const navigate = useNavigate();
 
     const handleBet = () => {
@@ -20,6 +20,8 @@ const BetButton = ({ matchId, league, homeTeam, awayTeam }) => {
                     league,
                     homeTeam,
                     awayTeam,
+                    homeTeamId, // Agregamos el ID del equipo local
+                    awayTeamId, // Agregamos el ID del equipo visitante
                 },
             });
         }

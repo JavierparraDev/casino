@@ -17,7 +17,7 @@ const transactionSchema = new mongoose.Schema({
     },
     tipo: {
         type: String,
-        enum: ['recarga', 'apuestaGanada', 'apuestaPerdida', 'apuesta', 'retiro'],
+        enum: ['recarga', 'ganancia', 'reembolso', 'apuesta', 'retiro'],
         required: true
     },
     fecha: {
