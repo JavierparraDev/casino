@@ -20,7 +20,16 @@
     color: #333;
 }
 
-.card input,
+.card input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    color: #333;
+}
 .card select {
     width: calc(100% - 20px);
     padding: 10px;
