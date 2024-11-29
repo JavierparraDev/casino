@@ -16,11 +16,12 @@ function App() {
     <Router>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route element={<Layout />}>
 
         <Route path="/" element={<DashboardPage />} />
         <Route path="/bet" element={<BetPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        
         <Route path="/account" element={<AccountPage />} />
         <Route path="/betsHistory" element={<BetsHistory />} />
         <Route path="/adminBalance" element={<AdminBalance />} />

@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #5e35b1, #ff6f61, #ff8a50);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    text-align: center; /* Centra el texto en las vistas, si es necesario */
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px; /* Ancho de la barra de scroll */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f4f4f4; /* Color del fondo del track de scroll */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #5e35b1, #ff6f61, #ff8a50);
+    border-radius: 20px; /* Bordes redondeados para dar forma de serpiente */
+    border: 3px solid #f4f4f4; /* Separación visual con el track */
+    background-size: 300% 300%; /* Tamaño del gradiente animado */
+    animation: scrollThumbAnimation 2s linear infinite; /* Animación infinita */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #ff6f61, #ff8a50, #5e35b1); /* Cambia colores en hover */
+  }
+  
+  /* Animación para el gradiente */
+  @keyframes scrollThumbAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }

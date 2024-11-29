@@ -10,10 +10,6 @@ function DashboardPage() {
 
     return (
         <div className="dashboard-container">
-            <div className="account-button">
-                <button onClick={() => navigate('/account')}>Cuenta</button>
-            </div>
-
             {}
             <div className="matches-container">
                 <div className="dashboard-card">

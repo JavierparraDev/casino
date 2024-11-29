@@ -40,7 +40,7 @@ const UserInfo = ({ showName = true, showEmail = true, showBalance = true }) => 
         <div>
             {showName && (
                 <p>
-                    <strong>Nombre:</strong> {userData.nombres} {userData.apellidos}
+                    {userData.nombres} {userData.apellidos}
                 </p>
             )}
             {showEmail && <p><strong>Correo:</strong> {userData.correo}</p>}

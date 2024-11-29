@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../styles/BetPage.css';
 
 const BetPage = () => {
     const location = useLocation();
@@ -43,7 +44,7 @@ const BetPage = () => {
     };
 
     return (
-        <div>
+        <div className="bet-page">
             <h1>Realizar Apuesta</h1>
             <p><strong>Liga:</strong> {league}</p>
             <p><strong>Partido:</strong> {homeTeam} vs {awayTeam}</p>
@@ -78,8 +79,8 @@ const BetPage = () => {
                 <button type="submit">Apostar</button>
             </form>
 
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            {success && <p style={{ color: 'green' }}>{success}</p>}
+            {error && <p className="error">{error}</p>}
+            {success && <p className="success">{success}</p>}
         </div>
     );
 };
