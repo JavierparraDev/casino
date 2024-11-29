@@ -64,8 +64,6 @@ const AccountPage = () => {
                         Administrar Saldo
                     </button>
                 </div>
-                
-                <LogoutButton navigate={navigate} />
             </div>
         </div>
     );

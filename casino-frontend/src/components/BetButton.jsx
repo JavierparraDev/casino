@@ -33,7 +33,7 @@ const BetButton = ({ matchId, league, homeTeam, awayTeam, homeTeamId, awayTeamId
             style={{
                 marginLeft: '10px',
                 padding: '5px 10px',
-                backgroundColor: '#007BFF',
+                backgroundColor: '#ff6f61',
                 color: '#FFF',
                 border: 'none',
                 borderRadius: '5px',

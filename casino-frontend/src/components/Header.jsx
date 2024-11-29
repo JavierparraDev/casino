@@ -68,11 +68,11 @@ const Header = () => {
                         <li>
                             <Link to="/">Inicio</Link>
                         </li>
-                        <li>
-                            <Link to="/bet">Apuestas</Link>
-                        </li>
                         {isAuthenticated ? (
                             <>
+                            <li>
+                                <Link to="/betsHistory">Apuestas</Link>
+                            </li>
                                 <li>
                                     <Link to="/account">Cuenta</Link>
                                 </li>

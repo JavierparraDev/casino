@@ -1,28 +1,18 @@
-// src/pages/BetsPage.jsx
 import React from 'react';
 import UserBets from '../components/UserBets';
+import '../styles/BetsHistory.css';
 
 const BetsPage = () => {
     const { bets, error, handleClaimReward } = UserBets();  // Llamamos al componente que maneja la lógica
 
     return (
-        <div>
+        <div className="bets-container">
             <h1>Mis Apuestas</h1>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <ul>
                 {bets.map((bet) => (
-                    <li
-                        key={bet._id}
-                        style={{
-                            marginTop: '40px',
-                            padding: '10px',
-                            border: '1px solid #ccc',
-                            borderRadius: '8px',
-                        }}
-                    >
-                        <p>
-                            <strong>Partido:</strong> {bet.homeTeam} vs {bet.awayTeam}
-                        </p>
+                    <li key={bet._id} className="bet-card">
+                        <h3>{bet.homeTeam} vs {bet.awayTeam}</h3>
                         <p>
                             <strong>Apuesta:</strong>{' '}
                             {bet.betType === 'home'
@@ -44,20 +34,12 @@ const BetsPage = () => {
                         {bet.status === 'resuelta' && !bet.claimed && (
                             <button
                                 onClick={() => handleClaimReward(bet._id)}
-                                style={{
-                                    padding: '5px 10px',
-                                    backgroundColor: '#28a745',
-                                    color: '#fff',
-                                    border: 'none',
-                                    borderRadius: '5px',
-                                    cursor: 'pointer',
-                                }}
                             >
                                 Reclamar recompensa
                             </button>
                         )}
                         {bet.claimed && (
-                            <p style={{ color: 'gray', fontStyle: 'italic' }}>
+                            <p className="claimed-message">
                                 Recompensa ya reclamada
                             </p>
                         )}

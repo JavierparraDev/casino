@@ -1,0 +1,57 @@
+/* Contenedor principal de apuestas */
+.bets-container {
+    padding: 40px;
+}
+
+/* Título principal "Mis Apuestas" */
+.bets-container h1 {
+    font-size: 2.5rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+/* Tarjetas para cada apuesta */
+.bets-container .bet-card {
+    background-color: #4f4c4c; /* Fondo gris oscuro */
+    color: #fff; /* Texto blanco */
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Título de cada tarjeta */
+.bets-container .bet-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+/* Detalles de la apuesta dentro de la tarjeta */
+.bets-container .bet-card p {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+/* Botón para reclamar recompensa */
+.bets-container .bet-card button {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.bets-container .bet-card button:hover {
+    background-color: #218838;
+}
+
+/* Mensaje de recompensa ya reclamada */
+.bets-container .bet-card .claimed-message {
+    color: gray;
+    font-style: italic;
+    margin-top: 10px;
+}
