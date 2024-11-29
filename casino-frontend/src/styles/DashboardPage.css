@@ -1,28 +1,11 @@
-
+/* Contenedor principal del dashboard */
 .dashboard-container {
     position: relative;
     padding: 20px;
     min-height: 100vh;
 }
-.account-button {
-    position: absolute;
-    top: 20px;
-    right: -50px;
-}
 
-.account-button button {
-    background-color: #673ab7; 
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.account-button button:hover {
-    background-color: #5e2a8c; 
-}
-
+/* Estilo para los contenedores de las tarjetas de partidos */
 .matches-container {
     display: flex;
     justify-content: space-between;
@@ -30,7 +13,7 @@
     margin-top: 50px;
 }
 
-
+/* Estilos para las tarjetas */
 .dashboard-card {
     background-color: white;
     border-radius: 10px;
@@ -40,19 +23,23 @@
     max-width: 350px;
     min-width: 280px; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #333;
 }
 
+/* Efecto hover para las tarjetas */
 .dashboard-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); 
 }
 
+/* Estilo para los títulos dentro de las tarjetas */
 .dashboard-card h3 {
     font-size: 1.5rem;
     color: #333;
     margin-bottom: 15px;
 }
 
+/* Estilo para los botones dentro de las tarjetas */
 .dashboard-card button {
     background-color: #673ab7;
     color: white;
@@ -64,11 +51,13 @@
     margin-top: 15px;
 }
 
+/* Estilo para el botón deshabilitado */
 .dashboard-card button:disabled {
     background-color: #d1c4e9;
     cursor: not-allowed;
 }
 
+/* Estilo para el hover en el botón */
 .dashboard-card button:hover {
     background-color: #5e2a8c;
 }

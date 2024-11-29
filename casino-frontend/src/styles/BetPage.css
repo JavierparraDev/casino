@@ -1,15 +1,4 @@
 /* General Styles */
-body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #5e35b1, #ff6f61, #ff8a50); /* Fondo base */
-  color: #fff; /* Color del texto principal */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
 /* Contenedor Principal */
 .bet-page {
   background: #282c34; /* Fondo oscuro para contraste */
@@ -32,6 +21,7 @@ body {
 .bet-page p {
   font-size: 1rem;
   margin: 0.5rem 0;
+  color: white;
 }
 
 .bet-page ul {
@@ -46,6 +36,7 @@ body {
   margin: 0.5rem 0;
   border-radius: 10px; /* Bordes redondeados */
   font-size: 1rem;
+  color:#fff;
 }
 
 /* Formulario */

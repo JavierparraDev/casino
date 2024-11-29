@@ -1,5 +1,7 @@
 /* Contenedor principal */
 /* Contenedor principal */
+
+
 .account-container {
     background-color: #fff;
     border-radius: 15px;
@@ -8,6 +10,7 @@
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
     text-align: center;
     animation: fadeIn 0.8s ease-out;
+    color: #333;
 }
 
 /* Título */

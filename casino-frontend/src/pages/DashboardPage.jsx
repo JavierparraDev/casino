@@ -10,7 +10,6 @@ function DashboardPage() {
 
     return (
         <div className="dashboard-container">
-            {}
             <div className="matches-container">
                 <div className="dashboard-card">
                     <LiveMatches />
