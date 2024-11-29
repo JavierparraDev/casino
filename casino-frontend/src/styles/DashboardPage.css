@@ -1,0 +1,74 @@
+
+.dashboard-container {
+    position: relative;
+    padding: 20px;
+    min-height: 100vh;
+}
+.account-button {
+    position: absolute;
+    top: 20px;
+    right: -50px;
+}
+
+.account-button button {
+    background-color: #673ab7; 
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.account-button button:hover {
+    background-color: #5e2a8c; 
+}
+
+.matches-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+
+.dashboard-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    padding: 20px;
+    flex: 1; 
+    max-width: 350px;
+    min-width: 280px; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); 
+}
+
+.dashboard-card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.dashboard-card button {
+    background-color: #673ab7;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.dashboard-card button:disabled {
+    background-color: #d1c4e9;
+    cursor: not-allowed;
+}
+
+.dashboard-card button:hover {
+    background-color: #5e2a8c;
+}

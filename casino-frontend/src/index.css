@@ -28,6 +28,7 @@ body {
   background: linear-gradient(135deg, #5e35b1, #ff6f61, #ff8a50);
   display: flex;
   flex-direction: column;
+
 }
 
 h1 {
