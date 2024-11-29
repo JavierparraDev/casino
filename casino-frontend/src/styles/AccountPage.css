@@ -1,14 +1,16 @@
-/* AccountPage.css */
-
 /* Contenedor principal */
 .account-container {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 40px 30px;
+    width: 400px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
 }
 
 /* Título */
-.account-container h1 {
+.account-card h1 {
     font-size: 2rem;
     margin-bottom: 20px;
     color: #333;
@@ -66,4 +68,29 @@
     display: flex;
     gap: 10px;
     margin-top: 20px;
+    justify-content: center;
 }
+
+/* Botón flotante */
+.floating-button {
+    position: absolute;
+    top: 485px;
+    left: 200px;
+}
+
+.floating-button button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.floating-button button:hover {
+    background-color: #555;
+}
+
+
+
