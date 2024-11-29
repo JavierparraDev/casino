@@ -1,0 +1,61 @@
+.header {
+  background-color: var(--background-color, #242424);
+  padding: 0.5rem 1rem; 
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%; /* Asegura que el header ocupe todo el ancho */
+  z-index: 1000;
+}
+
+.header__content {
+  max-width: 1280px; /* Opcional: limita el ancho máximo del contenido */
+  margin: 0 auto; /* Centra el contenido horizontalmente */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo h1 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.header__menu {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.header__menu li {
+  margin: 0;
+}
+
+.header__menu li a {
+  color: rgba(255, 255, 255, 0.87);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.header__menu li a:hover {
+  color: #646cff;
+}
+
+@media (prefers-color-scheme: light) {
+  .header {
+    background-color: #ffffff;
+  }
+
+  .header__menu li a {
+    color: #213547;
+  }
+
+  .header__menu li a:hover {
+    color: #747bff;
+  }
+}
