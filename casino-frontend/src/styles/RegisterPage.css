@@ -1,0 +1,85 @@
+
+.card {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 40px 30px;
+    width: 400px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #5e35b1; /* Morado oscuro */
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+
+.card input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    color: #333;
+}
+
+.card select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    color: #333;
+}
+
+.card button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    background-color: #3c3ae6; /* Azul */
+    color: #fff;
+}
+
+.card button:hover {
+    background-color: #5e35b1; /* Morado oscuro */
+    transform: scale(1.05);
+}
+
+.card .error {
+    color: #d32f2f; /* Rojo opaco */
+    margin-top: 10px;
+}
+
+.card .success {
+    color: #388e3c; /* Verde */
+    margin-top: 10px;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,95 @@
+/* Header.css */
+
+/* General Styles for the Header */
+.header {
+    position: fixed; /* Fijo en la parte superior */
+    top: 0; /* Pegado al inicio */
+    left: 0;
+    width: 100%; /* Ocupa todo el ancho */
+    background-color: #282c34; /* Fondo oscuro */
+    padding: 0; /* Sin espaciado interno */
+    color: white; /* Texto blanco */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  }
+  
+  /* Content container */
+  .header__content {
+    display: flex;
+    justify-content: space-between; /* Separar logo y menú */
+    align-items: center; /* Centrar verticalmente */
+    max-width: 1200px; /* Limitar ancho máximo */
+    margin: 0 auto; /* Centrar horizontalmente */
+    padding: 0.5rem 1rem; /* Espaciado lateral */
+  }
+  
+  /* Logo Styling */
+  .header__logo {
+    display: flex; /* Asegura flexibilidad */
+    align-items: center; /* Centra la imagen */
+    gap: 10px; /* Espaciado entre logo y texto */
+    text-decoration: none; /* Elimina subrayado del enlace */
+  }
+  
+  .header__logo-image {
+    margin-right: 10px; /* Ajusta el espacio entre el logo y el texto */
+    width: 50px; /* Tamaño del logo */
+    height: 50px; /* Tamaño del logo */
+    object-fit: cover; /* Ajusta la imagen */
+    border-radius: 50%; /* Forma circular */
+    transition: transform 0.3s ease; /* Efecto al pasar el mouse */
+  }
+  
+  .header__logo-image:hover {
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el mouse */
+  }
+  
+  /* Navigation Menu */
+  .header__menu {
+    list-style: none; /* Eliminar viñetas */
+    display: flex; /* Mostrar en fila */
+    gap: 1.5rem; /* Espaciado entre elementos */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .header__menu li {
+    font-size: 1rem;
+  }
+  
+  .header__menu a {
+    text-decoration: none; /* Eliminar subrayado */
+    color: white; /* Texto blanco */
+    transition: color 0.3s; /* Animación para hover */
+  }
+  
+  .header__menu a:hover {
+    color: #61dafb; /* Azul React */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .header__content {
+      flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+      text-align: center;
+    }
+  
+    .header__menu {
+      flex-direction: column; /* Menú en columna */
+      gap: 1rem; /* Menor espaciado */
+    }
+  }
+  .header__menu-item--login {
+    display: flex; /* Asegura que el enlace y el texto estén alineados */
+    align-items: center;
+    gap: 1rem; /* Espacio entre el enlace y el texto */
+  }
+  
+  .header__menu-text {
+    display: flex; /* Cambiar a flex para asegurar alineación */
+    align-items: center; /* Centrar verticalmente */
+    margin-left: 10px; /* Espaciado adicional */
+    font-size: 18px; /* Aumenta el tamaño de fuente */
+    color: white; /* Cambia el color a blanco */
+    font-weight: bold; /* Opcional: dar énfasis */
+}

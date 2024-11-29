@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api'; // Configuración de Axios
+import '../styles/LoginPage.css';
 
 function LoginPage() {
     const [correo, setCorreo] = useState('');
@@ -29,7 +30,7 @@ function LoginPage() {
     };
 
     return (
-        <div>
+        <div className="card">
             <h1>Iniciar Sesión</h1>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <form onSubmit={handleLogin}>
@@ -51,15 +52,7 @@ function LoginPage() {
             </form>
             <button
                 onClick={() => navigate('/register')} // Botón para ir a la página de registro
-                style={{
-                    marginTop: '20px',
-                    padding: '10px 20px',
-                    backgroundColor: '#007BFF',
-                    color: '#FFF',
-                    border: 'none',
-                    borderRadius: '5px',
-                    cursor: 'pointer',
-                }}
+                
             >
                 Registro
             </button>
